@@ -7,7 +7,7 @@ import MemberAgreePage from "./page/MemberAgreePage";
 import SignUpPage from "./page/SignUpPage";
 import SignUpDone from "./component/SignUpDone";
 import TestPage from "./page/TestPage";
-
+import Mypage from "./page/Mypage";
 function App() {
   return (
     <>
@@ -17,6 +17,7 @@ function App() {
           <Container>
             <Layout>
               <Routes>
+                <Route path="members" element={<Mypage />} />
                 <Route path="/test" element={<TestPage />} />
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/memberAgree" element={<MemberAgreePage />} />
