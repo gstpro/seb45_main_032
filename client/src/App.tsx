@@ -14,7 +14,7 @@ function App() {
     <>
       <Router>
         <GlobalStyles />
-        <Body>
+        <Main>
           <Container>
             <Layout>
               <Routes>
@@ -27,7 +27,7 @@ function App() {
               </Routes>
             </Layout>
           </Container>
-        </Body>
+        </Main>
       </Router>
     </>
   );
@@ -43,7 +43,7 @@ const GlobalStyles = createGlobalStyle`
     font-family: 'Roboto';
   }
 `;
-const Body = styled.body`
+const Main = styled.main`
   width: 100vw;
   height: 100%;
   margin: 0px;
@@ -51,14 +51,8 @@ const Body = styled.body`
   justify-content: center;
 `;
 const Container = styled.div`
-  width: 500px;
+  width: 393px;
   min-width: 320px;
   min-height: 100vh;
   box-shadow: rgba(0, 0, 0, 0.15) 0px 8px 36px;
-`;
-
-const Header = styled.div`
-  min-height: 70px;
-  min-width: 320px;
-  background-color: aqua;
 `;
