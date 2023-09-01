@@ -18,7 +18,7 @@ function App() {
           <Container>
             <Layout>
               <Routes>
-                <Route path="members" element={<Mypage />} />
+                <Route path="/members" element={<Mypage />} />
                 <Route path="/test" element={<TestPage />} />
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/memberAgree" element={<MemberAgreePage />} />
