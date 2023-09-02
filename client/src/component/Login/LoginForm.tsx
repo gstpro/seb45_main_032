@@ -9,6 +9,7 @@ const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  //로그인버튼 클릭시 수행
   const loginHdr = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     try {
@@ -34,9 +35,7 @@ const LoginForm = () => {
   return (
     <LoginContainer>
       <EmailInput setEmail={setEmail} />
-      이녀석은 어딧는거야?
       <PasswordInput setPassword={setPassword} />
-      이녀석도 어딨는겨?
       <LoginBtn onClick={e => loginHdr(e)} />
     </LoginContainer>
   );
@@ -47,7 +46,7 @@ export default LoginForm;
 export const LoginContainer = styled.section`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
   margin-top: 60px;
-  background-color: grey;
+  width: 240px;
 `;

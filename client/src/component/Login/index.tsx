@@ -17,6 +17,6 @@ export default Login;
 export const LoginContainer = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
   padding-top: 226px;
 `;
