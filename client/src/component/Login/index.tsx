@@ -1,6 +1,6 @@
 import React from "react";
 import LoginForm from "./LoginForm";
-import PetTalkLogo from "./PetTalkLogo";
+import PetTalkLogo from "../PetTalkLogo/PetTalkLogo";
 import { styled } from "styled-components";
 
 const Login = () => {
