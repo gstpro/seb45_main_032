@@ -14,10 +14,10 @@ const PasswordInput: React.FC<PasswordInputProps> = ({ setPassword }) => {
     <PwContainer>
       <PwInput
         type="password"
-        placeholder="password"
+        placeholder="비밀번호"
         onChange={e => emailHdr(e)}
       ></PwInput>
-      <InputMsg>패스워드를 입력하세요</InputMsg>
+      <InputMsg>비밀번호를 입력하세요</InputMsg>
     </PwContainer>
   );
 };
@@ -39,5 +39,6 @@ export const PwInput = styled.input`
 
 export const InputMsg = styled.label`
   color: #279eff;
+  margin-top: 4px;
   font-size: 10px;
 `;

@@ -1,8 +1,9 @@
 import React from "react";
 import styled, { createGlobalStyle } from "styled-components";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
 import LoginPage from "./page/LoginPage";
+import MemberAgreePage from "./page/MemberAgreePage";
+import SignUpPage from "./page/SignUpPage";
 
 function App() {
   return (
@@ -14,6 +15,8 @@ function App() {
             <Wrapper>
               <Routes>
                 <Route path="/login" element={<LoginPage />} />
+                <Route path="/memberAgree" element={<MemberAgreePage />} />
+                <Route path="/signup" element={<SignUpPage />} />
               </Routes>
             </Wrapper>
           </Container>

@@ -39,6 +39,8 @@ export const InputBox = styled.input`
 `;
 
 export const InputMsg = styled.label`
+  margin-top: 4px;
   color: #279eff;
   font-size: 10px;
+  margin-bottom: 6px;
 `;
