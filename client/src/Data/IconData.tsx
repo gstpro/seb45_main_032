@@ -26,6 +26,7 @@ export const iconImg = [
   { iconId: 6, img: dog6 },
   { iconId: 7, img: dog7 },
   { iconId: 8, img: dog8 },
+  { iconId: 9, img: dog9 },
   { iconId: 10, img: cat1 },
   { iconId: 11, img: cat2 },
   { iconId: 12, img: cat3 },

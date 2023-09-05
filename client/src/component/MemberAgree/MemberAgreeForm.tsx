@@ -10,6 +10,7 @@ const MemberAgreeForm = () => {
   const [checkPInfo, setCheckPInfo] = useState(false);
   const [checkInfo, setCheckInfo] = useState(false);
 
+  //확인누를시 회원가입페이지로 직행.
   const confirmHdr = () => {
     navigate("/signup");
   };

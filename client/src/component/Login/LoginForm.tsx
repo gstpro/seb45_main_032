@@ -13,7 +13,7 @@ const LoginForm = () => {
   const loginHdr = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:8080/login", {
+      const res = await axios.post("http://localhost:8080/members/login", {
         email: email,
         password: password,
       });

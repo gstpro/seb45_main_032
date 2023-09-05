@@ -28,7 +28,7 @@ export const NNCtn = styled.section`
   display: flex;
   flex-direction: column;
   background-color: #ffffff;
-  width: 240px;
+  width: 190px;
 `;
 
 export const InputBox = styled.input`

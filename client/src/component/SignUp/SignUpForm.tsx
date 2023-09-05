@@ -1,31 +1,30 @@
 import React, { useState } from "react";
 import { styled } from "styled-components";
 import EmailInput from "../InputBox/EmailInput";
+import EmailCheckBtn from "../Button/EmailCheckBtn";
 import NickNameInput from "../InputBox/NickNameInput";
 import PasswordInput from "../InputBox/PasswordInput";
 import PasswordCfInput from "../InputBox/PasswordCfInput";
 import ConfirmBtn from "../Button/ConfirmBtn";
 import MobileCertify from "./MobileCertify";
-import axios, { AxiosError } from "axios";
-import { iconImg } from "../../ImageData/IconData";
+import axios from "axios";
+import { iconImg } from "../../Data/IconData";
 
 const SignUpForm = () => {
-  const [email, setEmail] = useState("");
-  const [nickName, setNickName] = useState("");
-  const [passwordCf, setPasswordCf] = useState("");
-  const [password, setPassword] = useState("");
-  const [phoneNum, setPhoneNum] = useState("");
-  const [certifyNum, setCertifyNum] = useState("");
-  const [isCertify, setCertify] = useState(false);
-  const [image, setImage] = useState("");
-  const [testFile, setTestFile] = useState({
-    email: "",
-    nickName: "",
-    password: "",
-    profileImage: "",
-    phone: "",
-  });
+  const [email, setEmail] = useState(""); //email인풋에 입력
+  const [isValidEmail, setValidEmail] = useState(false); //email형식에 유효한지 확인
+  const [isDuplicate, setDuplicate] = useState(false); //이메일 중복체크 확인
+  const [nickName, setNickName] = useState(""); //닉넴인풋에 입력
+  const [password, setPassword] = useState(""); //pw입력
+  const [isValidPw, setValidPw] = useState(false); //유효성검사 통과한 pw확인.
+  const [passwordCf, setPasswordCf] = useState(""); //Pw재입력에 입력
+  const [isSamePw, setIsSamePw] = useState(false); //pw재입력과 동일한지확인.
+  const [phoneNum, setPhoneNum] = useState(""); //전번인증에 입력
+  const [certifyNum, setCertifyNum] = useState(""); //인증번호 입력
+  const [isCertify, setCertify] = useState(false); //전송버튼 누른후 인증성공시 인증을true로
+  const [image, setImage] = useState(""); //image세팅
 
+  //랜덤으로 1~18번 아이콘중 하나 뽑음
   const imageHdr = () => {
     const iconId = Math.floor(Math.random() * (18 - 1)) + 1;
     const randomImg = iconImg[iconId].img;
@@ -77,7 +76,6 @@ const SignUpForm = () => {
       const res = await axios.post("http://localhost:8080/signup", data);
       const successMsg = res.data;
       console.log(successMsg);
-      setTestFile(successMsg);
     } catch (error) {
       console.log("형식이 잘못되었거나 알수없는 에러");
       // if (axios.isAxiosError(error)) {
@@ -100,10 +98,37 @@ const SignUpForm = () => {
         <DoneSpan>완료</DoneSpan>
       </div>
       <InputCtn>
-        <EmailInput setEmail={setEmail} />
+        <EmailCtn>
+          <EmailInput
+            setEmail={setEmail}
+            email={email}
+            setValidEmail={setValidEmail}
+            setDuplicate={setDuplicate}
+          />
+          <EmailCheckBtn
+            email={email}
+            isValidEmail={isValidEmail}
+            isDuplicate={isDuplicate}
+            setDuplicate={setDuplicate}
+          />
+        </EmailCtn>
         <NickNameInput setNickName={setNickName} />
-        <PasswordInput setPassword={setPassword} />
-        <PasswordCfInput setPasswordCf={setPasswordCf} />
+        <PasswordInputWrapper>
+          <PasswordInput
+            password={password}
+            setPassword={setPassword}
+            setValidPw={setValidPw}
+          />
+        </PasswordInputWrapper>
+        <PasswordCfWrapper>
+          <PasswordCfInput
+            password={password}
+            isSamePw={isSamePw}
+            setIsSamePw={setIsSamePw}
+            passwordCf={passwordCf}
+            setPasswordCf={setPasswordCf}
+          />
+        </PasswordCfWrapper>
       </InputCtn>
       <MobileCertify
         certifyHdr={certifyHdr}
@@ -116,12 +141,18 @@ const SignUpForm = () => {
       <ConfirmBtn
         onClick={e => signUpHdr(e)}
         isDisable={
-          isCertify && email && password && passwordCf && nickName && image
+          isValidEmail &&
+          isDuplicate &&
+          isCertify &&
+          email &&
+          password &&
+          isValidPw &&
+          passwordCf &&
+          nickName
             ? false
             : true
         }
       />
-      <img src={testFile.profileImage}></img>
     </SignUpFormSection>
   );
 };
@@ -145,6 +176,18 @@ export const InputSpan = styled.span`
   margin-right: 5px;
 `;
 
+export const EmailCtn = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+export const PasswordInputWrapper = styled.div`
+  margin-top: 4px;
+`;
+
+export const PasswordCfWrapper = styled.div`
+  margin-top: 4px;
+`;
 export const DoneSpan = styled.span`
   font-size: 12px;
   color: #595959;

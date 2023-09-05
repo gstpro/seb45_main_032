@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import LoginPage from "./page/LoginPage";
 import MemberAgreePage from "./page/MemberAgreePage";
 import SignUpPage from "./page/SignUpPage";
+import SignUpDone from "./component/SignUpDone";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/memberAgree" element={<MemberAgreePage />} />
                 <Route path="/signup" element={<SignUpPage />} />
+                <Route path="/signupDone" element={<SignUpDone />} />
               </Routes>
             </Wrapper>
           </Container>
@@ -38,7 +40,7 @@ const GlobalStyles = createGlobalStyle`
 `;
 const Main = styled.main`
   width: 100vw;
-  height: 100vh;
+  height: 100%;
   margin: 0px;
   display: flex;
   justify-content: center;
@@ -52,5 +54,5 @@ const Container = styled.div`
 
 const Wrapper = styled.div`
   min-height: 100%;
-  margin: 28px;
+  margin: 16px;
 `;
