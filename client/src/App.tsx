@@ -1,19 +1,20 @@
 import React from "react";
 import styled, { createGlobalStyle } from "styled-components";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Layout from "./LayOut";
+import Layout from "./Layout";
 import LoginPage from "./page/LoginPage";
 import MemberAgreePage from "./page/MemberAgreePage";
 import SignUpPage from "./page/SignUpPage";
 import SignUpDone from "./component/SignUpDone";
 import TestPage from "./page/TestPage";
 import Mypage from "./page/Mypage";
+
 function App() {
   return (
     <>
       <Router>
         <GlobalStyles />
-        <Main>
+        <Body>
           <Container>
             <Layout>
               <Routes>
@@ -26,7 +27,7 @@ function App() {
               </Routes>
             </Layout>
           </Container>
-        </Main>
+        </Body>
       </Router>
     </>
   );
@@ -42,7 +43,7 @@ const GlobalStyles = createGlobalStyle`
     font-family: 'Roboto';
   }
 `;
-const Main = styled.main`
+const Body = styled.body`
   width: 100vw;
   height: 100%;
   margin: 0px;
@@ -50,8 +51,14 @@ const Main = styled.main`
   justify-content: center;
 `;
 const Container = styled.div`
-  width: 393px;
+  width: 500px;
   min-width: 320px;
   min-height: 100vh;
   box-shadow: rgba(0, 0, 0, 0.15) 0px 8px 36px;
+`;
+
+const Header = styled.div`
+  min-height: 70px;
+  min-width: 320px;
+  background-color: aqua;
 `;
