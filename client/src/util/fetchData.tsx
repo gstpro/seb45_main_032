@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export async function fetchData({ email, password }) {
+export async function fetchData({ email, password }, setErrorMsg) {
   try {
     const data = {
       email: email,
@@ -19,6 +19,6 @@ export async function fetchData({ email, password }) {
     };
     return userData;
   } catch (error) {
-    console.log("로그인 정보가 잘못되었습니다.");
+    setErrorMsg("로그인 정보를 확인하세요");
   }
 }

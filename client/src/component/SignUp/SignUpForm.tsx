@@ -37,7 +37,7 @@ const SignUpForm = () => {
     setImage(randomImg);
   };
 
-  //인증버튼클릭시 수행 API주소 바꿀것
+  //인증버튼클릭시 수행 API주소 바꿀것 지금 꺼둔상태라 아무거나 입력하면 맨밑확인버튼 활성화됩니다.
   const certifyHdr = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     imageHdr();
@@ -54,7 +54,7 @@ const SignUpForm = () => {
     //   console.log("인증 실패");
     // }
   };
-  //전송버튼 클릭시 수행 api주소 바꿀것.
+  //전송버튼 클릭시 수행 api주소 바꿀것. 위에 활성화 시키면 이후 밑에 ConfirmBtn컴포넌트의 주석처리한거 해제하면됨.
   const sendHdr = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     try {
@@ -81,13 +81,6 @@ const SignUpForm = () => {
         profileImage: image,
         phone: phoneNum,
       };
-      // const data = {
-      //   phone: "1231231",
-      //   email: "test3@gmail.com",
-      //   nickName: "테스트",
-      //   password: "asdf1234",
-      //   profileImage: "뭔가있음",
-      // };
 
       console.log(data);
       //회원가입 api 주소 확인하고 변경해야함.  react Query 사용시 바꿔야할 가능성 높음.
@@ -162,7 +155,6 @@ const SignUpForm = () => {
       <ConfirmBtn
         onClick={e => signUpHdr(e)}
         isDisable={
-          // isValidEmail &&
           isDuplicate &&
           // isCertify &&
           isValidPw &&

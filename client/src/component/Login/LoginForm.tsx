@@ -4,15 +4,20 @@ import EmailInput from "../InputBox/EmailInput";
 import PasswordInput from "../InputBox/PasswordInput";
 import LoginBtn from "../Button/LoginBtn";
 import TokenProvider from "../../util/tokenProvider";
+import { useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errorMsg, setErrorMsg] = useState("");
 
-  //로그인버튼 클릭시 수행 , 현재 문제가 있음 고칠 필요가 있음.
+  //로그인버튼 클릭시 수행 , 현재 문제가 있음 고칠 필요가 있음. 리스트페이지 등록시 navigate에 엔드포인트 입력.
   const loginHdr = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    TokenProvider({ email, password });
+    TokenProvider({ email, password }, setErrorMsg);
+    navigate("/");
+
     // try {
     //   const res = await axios.post("http://localhost:8080/members/login", {
     //     email: email,
