@@ -8,6 +8,7 @@ import SignUpPage from "./page/SignUpPage";
 import SignUpDone from "./component/SignUpDone";
 import TestPage from "./page/TestPage";
 import Mypage from "./page/Mypage";
+import Nav from "./component/nav/Nav";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
                 <Route path="/signupDone" element={<SignUpDone />} />
               </Routes>
             </Layout>
+            <Nav />
           </Container>
         </Body>
       </Router>
