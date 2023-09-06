@@ -3,34 +3,35 @@ import { styled } from "styled-components";
 import EmailInput from "../InputBox/EmailInput";
 import PasswordInput from "../InputBox/PasswordInput";
 import LoginBtn from "../Button/LoginBtn";
-import axios, { AxiosError } from "axios";
+import TokenProvider from "../../util/tokenProvider";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  //로그인버튼 클릭시 수행
+  //로그인버튼 클릭시 수행 , 현재 문제가 있음 고칠 필요가 있음.
   const loginHdr = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    try {
-      const res = await axios.post("http://localhost:8080/members/login", {
-        email: email,
-        password: password,
-      });
-      const token = res.data;
-      console.log(token);
-    } catch (error) {
-      if (axios.isAxiosError(error)) {
-        const axiosError = error as AxiosError;
-        if (axiosError.response) {
-          console.log("로그인 정보 확인바람", axiosError.response.data);
-        } else {
-          console.error("요청 실패함", axiosError.message);
-        }
-      } else {
-        console.error("알수 없는 에러가 발생");
-      }
-    }
+    TokenProvider({ email, password });
+    // try {
+    //   const res = await axios.post("http://localhost:8080/members/login", {
+    //     email: email,
+    //     password: password,
+    //   });
+    //   const token = res;
+    //   console.log(token);
+    // } catch (error) {
+    //   if (axios.isAxiosError(error)) {
+    //     const axiosError = error as AxiosError;
+    //     if (axiosError.response) {
+    //       console.log("로그인 정보 확인바람", axiosError.response.data);
+    //     } else {
+    //       console.error("요청 실패함", axiosError.message);
+    //     }
+    //   } else {
+    //     console.error("알수 없는 에러가 발생");
+    //   }
+    // }
   };
   return (
     <LoginContainer>

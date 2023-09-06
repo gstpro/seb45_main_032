@@ -16,9 +16,12 @@ const EmailCheckBtn: React.FC<EmailCheckBtnProps> = ({
 }) => {
   const validEmailhdr = async () => {
     try {
-      const res = await axios.post("http://localhost:8080/check", {
-        email: email,
-      });
+      const res = await axios.post(
+        "https://7fdc-218-155-160-190.ngrok-free.app/check",
+        {
+          email: email,
+        },
+      );
       setDuplicate(true);
       //여기 구현은 실제 서버 돌리면서 실험할 필요가 있음.
       console.log(res.data);

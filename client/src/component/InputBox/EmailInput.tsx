@@ -24,7 +24,6 @@ const EmailInput: React.FC<EmailInputProps> = ({
 
   const emailHdr = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
-    console.log(email);
     if (setValidEmail && setDuplicate) {
       setValidEmail(false);
       setDuplicate(false);
@@ -50,15 +49,7 @@ const EmailInput: React.FC<EmailInputProps> = ({
         placeholder="email"
         onChange={e => emailHdr(e)}
       ></InputBox>
-      {isValid ? (
-        <InputMsg style={{ color: "#279eff" }}>
-          유효한 email형식 입니다.
-        </InputMsg>
-      ) : (
-        <InputMsg style={{ color: "#ff3030" }}>
-          email형식으로 작성 및 체크를 누르세요
-        </InputMsg>
-      )}
+      <InputMsg>email을 입력하세요</InputMsg>
     </EIContainer>
   );
 };
@@ -69,7 +60,7 @@ export const EIContainer = styled.section`
   display: flex;
   flex-direction: column;
   background-color: #ffffff;
-  width: 190px;
+  width: 240px;
 `;
 
 export const InputBox = styled.input`
@@ -77,6 +68,7 @@ export const InputBox = styled.input`
   border: 1px, inset, #595959;
   border-radius: 4px;
   padding-left: 10px;
+  width: 190px;
 `;
 
 export const InputMsg = styled.label`

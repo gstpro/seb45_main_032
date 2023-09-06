@@ -7,10 +7,12 @@ import PasswordInput from "../InputBox/PasswordInput";
 import PasswordCfInput from "../InputBox/PasswordCfInput";
 import ConfirmBtn from "../Button/ConfirmBtn";
 import MobileCertify from "./MobileCertify";
-import axios from "axios";
-import { iconImg } from "../../Data/IconData";
+import axios, { AxiosError } from "axios";
+import { iconImg } from "../../data/IconData";
+import { useNavigate } from "react-router-dom";
 
 const SignUpForm = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState(""); //email인풋에 입력
   const [isValidEmail, setValidEmail] = useState(false); //email형식에 유효한지 확인
   const [isDuplicate, setDuplicate] = useState(false); //이메일 중복체크 확인
@@ -24,35 +26,41 @@ const SignUpForm = () => {
   const [isCertify, setCertify] = useState(false); //전송버튼 누른후 인증성공시 인증을true로
   const [image, setImage] = useState(""); //image세팅
 
+  //http://localhost:8080
+
   //랜덤으로 1~18번 아이콘중 하나 뽑음
   const imageHdr = () => {
     const iconId = Math.floor(Math.random() * (18 - 1)) + 1;
     const randomImg = iconImg[iconId].img;
     console.log(iconId);
+    console.log(typeof randomImg);
     setImage(randomImg);
   };
 
   //인증버튼클릭시 수행 API주소 바꿀것
   const certifyHdr = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
+    imageHdr();
     console.log(phoneNum);
-    try {
-      const res = await axios.post("http://localhost:8080/phonecertify", {
-        phoneNum: phoneNum,
-      });
-      console.log(res.data);
-      imageHdr();
-    } catch (err) {
-      console.log("인증 실패");
-    }
+    // try {
+    //   const res = await axios.post(
+    //     " https://7fdc-218-155-160-190.ngrok-free.app/sendSms",
+    //     {
+    //       phone: phoneNum,
+    //     },
+    //   );
+    //   console.log(res.data);
+    // } catch (err) {
+    //   console.log("인증 실패");
+    // }
   };
   //전송버튼 클릭시 수행 api주소 바꿀것.
   const sendHdr = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:8080/send", {
-        certifyNum: certifyNum,
-      });
+      const res = await axios.post(
+        ` https://7fdc-218-155-160-190.ngrok-free.app/registration?authCode=${certifyNum}&phone=${phoneNum}`,
+      );
       console.log(res.data);
       if (res.data) {
         setCertify(true);
@@ -64,6 +72,7 @@ const SignUpForm = () => {
   //확인버튼 클릭시 수행 APi주소 수정!
   const signUpHdr = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
+
     try {
       const data = {
         email: email,
@@ -72,22 +81,34 @@ const SignUpForm = () => {
         profileImage: image,
         phone: phoneNum,
       };
-      //회원가입 api 주소 확인하고 변경해야함.
-      const res = await axios.post("http://localhost:8080/signup", data);
+      // const data = {
+      //   phone: "1231231",
+      //   email: "test3@gmail.com",
+      //   nickName: "테스트",
+      //   password: "asdf1234",
+      //   profileImage: "뭔가있음",
+      // };
+
+      console.log(data);
+      //회원가입 api 주소 확인하고 변경해야함.  react Query 사용시 바꿔야할 가능성 높음.
+      const res = await axios.post(
+        "https://7fdc-218-155-160-190.ngrok-free.app/members",
+        data,
+      );
       const successMsg = res.data;
       console.log(successMsg);
+      navigate("/signupDone");
     } catch (error) {
-      console.log("형식이 잘못되었거나 알수없는 에러");
-      // if (axios.isAxiosError(error)) {
-      //   const axiosError = error as AxiosError;
-      //   if (axiosError.response) {
-      //     console.log("회원가입 정보 확인바람", axiosError.response.data);
-      //   } else {
-      //     console.error("요청 실패함", axiosError.message);
-      //   }
-      // } else {
-      //   console.error("알수 없는 에러가 발생");
-      // }
+      if (axios.isAxiosError(error)) {
+        const axiosError = error as AxiosError;
+        if (axiosError.response) {
+          console.log("회원가입 정보 확인바람", axiosError.response.data);
+        } else {
+          console.error("요청 실패함", axiosError.message);
+        }
+      } else {
+        console.error("알수 없는 에러가 발생");
+      }
     }
   };
   return (
@@ -141,13 +162,13 @@ const SignUpForm = () => {
       <ConfirmBtn
         onClick={e => signUpHdr(e)}
         isDisable={
-          isValidEmail &&
+          // isValidEmail &&
           isDuplicate &&
-          isCertify &&
-          email &&
-          password &&
+          // isCertify &&
           isValidPw &&
           passwordCf &&
+          email &&
+          password &&
           nickName
             ? false
             : true

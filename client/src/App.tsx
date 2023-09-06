@@ -5,6 +5,7 @@ import LoginPage from "./page/LoginPage";
 import MemberAgreePage from "./page/MemberAgreePage";
 import SignUpPage from "./page/SignUpPage";
 import SignUpDone from "./component/SignUpDone";
+import TestPage from "./page/TestPage";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Container>
             <Wrapper>
               <Routes>
+                <Route path="/test" element={<TestPage />} />
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/memberAgree" element={<MemberAgreePage />} />
                 <Route path="/signup" element={<SignUpPage />} />
