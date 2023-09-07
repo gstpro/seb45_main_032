@@ -5,6 +5,7 @@ import Mypage from "./page/Mypage";
 import Layout from "./Layout";
 import Header from "./component/header/Header";
 import Nav from "./component/nav/Nav";
+import WebSocketChat from "./page/Chat";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
             <Header />
             <Layout>
               <Routes>
+                <Route path="/chat" element={<WebSocketChat />} />
                 <Route path="/members" element={<Mypage />} />
               </Routes>
             </Layout>
