@@ -1,9 +1,9 @@
 import React from "react";
 import { styled } from "styled-components";
-import PhoneNumberInput from "../InputBox/PhoneNumInput";
-import CertifyBtn from "../Button/CirtifyBtn";
-import CertifyNumInput from "../InputBox/CertifyNumInput";
-import SendBtn from "../Button/SendBtn";
+import PhoneNumberInput from "../../../InputBox/PhoneNumInput";
+import CertifyBtn from "../../../Button/CirtifyBtn";
+import CertifyNumInput from "../../../InputBox/CertifyNumInput";
+import SendBtn from "../../../Button/SendBtn";
 
 interface MobileCertifyProps {
   phoneNum: string;

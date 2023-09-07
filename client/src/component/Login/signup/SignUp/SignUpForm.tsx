@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import { styled } from "styled-components";
-import EmailInput from "../InputBox/EmailInput";
-import EmailCheckBtn from "../Button/EmailCheckBtn";
-import NickNameInput from "../InputBox/NickNameInput";
-import PasswordInput from "../InputBox/PasswordInput";
-import PasswordCfInput from "../InputBox/PasswordCfInput";
-import ConfirmBtn from "../Button/ConfirmBtn";
-import MobileCertify from "./MobileCertify";
+import EmailInput from "../../../InputBox/EmailInput";
+import EmailCheckBtn from "../../../Button/EmailCheckBtn";
+import NickNameInput from "../../../InputBox/NickNameInput";
+import PasswordInput from "../../../InputBox/PasswordInput";
+import PasswordCfInput from "../../../InputBox/PasswordCfInput";
+import ConfirmBtn from "../../../Button/ConfirmBtn";
+import MobileCertify from "../../../signup/SignUp/MobileCertify";
 import axios, { AxiosError } from "axios";
-import { iconImg } from "../../data/IconData";
+import { iconImg } from "../../../../data/IconData";
 import { useNavigate } from "react-router-dom";
 
 const SignUpForm = () => {

@@ -4,7 +4,7 @@ import EmailInput from "../InputBox/EmailInput";
 import PasswordInput from "../InputBox/PasswordInput";
 import LoginBtn from "../Button/LoginBtn";
 import TokenProvider from "../../util/tokenProvider";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
   const navigate = useNavigate();
@@ -43,7 +43,14 @@ const LoginForm = () => {
       <EmailInput setEmail={setEmail} />
       <PasswordInput setPassword={setPassword} />
       <LoginBtn onClick={e => loginHdr(e)} />
-      <SignUpLink>회원가입</SignUpLink>
+      {errorMsg ? (
+        <span style={{ fontSize: "12px", marginTop: "4px" }}>
+          로그인정보를 확인하세요{" "}
+        </span>
+      ) : (
+        ""
+      )}
+      <SignUpLink to={"/memberAgree"}>회원가입</SignUpLink>
     </LoginContainer>
   );
 };
@@ -57,8 +64,8 @@ export const LoginContainer = styled.section`
   margin-top: 60px;
   width: 240px;
 `;
-//회원가입 나중에 회원가입페이지 작성시 약관동의페이지로 이동하도록 styled.div 삭제하고 styled(Link)로 교체해야함
-export const SignUpLink = styled.div`
+
+export const SignUpLink = styled(Link)`
   margin-top: 6px;
   font-size: 12px;
   color: #636262;

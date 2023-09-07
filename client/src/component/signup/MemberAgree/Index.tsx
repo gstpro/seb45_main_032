@@ -1,14 +1,14 @@
 import React from "react";
 import { styled } from "styled-components";
-import PetTalkLogo from "../PetTalkLogo/PetTalkLogo";
+import PetTalkLogo from "../../PetTalkLogo/PetTalkLogo";
 import MemberAgreeForm from "./MemberAgreeForm";
-import FooterLogin from "./CheckLogin";
+import CheckLogin from "./CheckLogin";
 const MemberAgree = () => {
   return (
     <MAContainer>
       <PetTalkLogo />
       <MemberAgreeForm />
-      <FooterLogin />
+      <CheckLogin />
     </MAContainer>
   );
 };

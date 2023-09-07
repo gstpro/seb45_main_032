@@ -5,10 +5,11 @@ import Layout from "./Layout";
 import LoginPage from "./page/LoginPage";
 import MemberAgreePage from "./page/MemberAgreePage";
 import SignUpPage from "./page/SignUpPage";
-import SignUpDone from "./component/SignUpDone";
+import SignUpDone from "./component/signup/SignUpDone";
 import TestPage from "./page/TestPage";
 import Mypage from "./page/Mypage";
 import Nav from "./component/nav/Nav";
+import Header from "./component/header/Header";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <GlobalStyles />
         <Body>
           <Container>
+            <Header />
             <Layout>
               <Routes>
                 <Route path="/members" element={<Mypage />} />

@@ -1,12 +1,12 @@
 import React from "react";
 import { styled } from "styled-components";
 
-interface ConfrimBtnProps {
+interface ConsfirmBtnProps {
   onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
   isDisable: boolean;
 }
 
-const ConfrimBtn: React.FC<ConfrimBtnProps> = ({ onClick, isDisable }) => {
+const ConfirmBtn: React.FC<ConsfirmBtnProps> = ({ onClick, isDisable }) => {
   return (
     <CFBtn onClick={onClick} disabled={isDisable}>
       확인
@@ -14,7 +14,7 @@ const ConfrimBtn: React.FC<ConfrimBtnProps> = ({ onClick, isDisable }) => {
   );
 };
 
-export default ConfrimBtn;
+export default ConfirmBtn;
 
 export const CFBtn = styled.button`
   width: 240px;

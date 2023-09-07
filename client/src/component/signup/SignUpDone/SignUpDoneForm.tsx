@@ -1,6 +1,6 @@
 import React from "react";
 import { styled } from "styled-components";
-import LoginBtn from "../Button/LoginBtn";
+import LoginBtn from "../../Button/LoginBtn";
 import { useNavigate } from "react-router-dom";
 
 const SignUpDoneForm = () => {

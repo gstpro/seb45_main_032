@@ -1,9 +1,10 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { styled } from "styled-components";
 
 const SignUpHeader = () => {
   return (
-    <SignUpLink>
+    <SignUpLink to={"/memberAgree"}>
       <SignUp>signup</SignUp>
     </SignUpLink>
   );
@@ -11,7 +12,7 @@ const SignUpHeader = () => {
 
 export default SignUpHeader;
 
-export const SignUpLink = styled.a`
+export const SignUpLink = styled(Link)`
   padding-right: 20px;
 `;
 
