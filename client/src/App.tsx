@@ -45,7 +45,6 @@ const GlobalStyles = createGlobalStyle`
     box-sizing: border-box;
     text-decoration: none;
     font-family: 'Roboto';
-    background-color: while;
   }
 `;
 const Body = styled.body`
