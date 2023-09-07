@@ -22,6 +22,10 @@ function App() {
             <Layout>
               <Routes>
                 <Route path="/chat" element={<ChatPage />} />
+                <Route path="/login" element={<LoginPage />} />
+                <Route path="/memberAgree" element={<MemberAgreePage />} />
+                <Route path="/signup" element={<SignUpPage />} />
+                <Route path="/signupDone" element={<SignUpDonePage />} />
                 <Route path="/members" element={<Mypage />} />
               </Routes>
             </Layout>
