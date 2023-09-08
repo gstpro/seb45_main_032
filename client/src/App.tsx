@@ -29,7 +29,7 @@ function App() {
                 <Route path="/signupDone" element={<SignUpDonePage />} />
                 <Route path="/" element={<MainPage />} />
                 <Route path="/members" element={<Mypage />} />
-                </Routes>
+              </Routes>
             </Layout>
             <Nav />
           </Container>
