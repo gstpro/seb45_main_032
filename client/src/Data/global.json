@@ -11,8 +11,12 @@
         "value": "#25429d",
         "type" :"color"
     },
-    "PraimaryActive" :{
+    "PrimaryActive" :{
         "value": "#1d8ce7",
+        "type" : "color"
+    },
+    "PrimaryDisable":{
+        "value": "#9ac5f4",
         "type" : "color"
     },
     "White" : {
@@ -25,7 +29,7 @@
     },
     "PuppleActive":{
         "value": "#f6f8ff",
-        "tyle" :"color"
+        "type" :"color"
     },
     "ErrorMsgRed" :{
         "value" :"#ff2727",
