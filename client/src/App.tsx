@@ -14,7 +14,7 @@ import MainPage from "./page/MainPage";
 import ChatPage from "./page/ChatPage";
 import BorderListPage from "./page/PostList";
 import WritePostPage from "./page/WritePostPage";
-import PostDetailPage from "./page/PostDetailPage";
+import PostDetailPage from "./page/PostDetail";
 
 function App() {
   return (
